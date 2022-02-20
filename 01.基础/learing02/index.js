@@ -10,17 +10,25 @@ class LikeButton {
       isLike: false,
     };
   }
+  setState(state) {
+    const oldEl = this.el;
+    this.state = state;
+    this.el = this.render();
+    console.log(oldEl);
+    this.onStateChange(oldEl, this.el);
+  }
 
   changeLikeText() {
-    const likeText = this.el.querySelector(".like-text");
-    this.state.isLike = !this.state.isLike;
-    likeText.innerHTML = this.state.isLike ? "点赞👍" : "取消👎";
+    console.log("用户点击了");
+    this.setState({
+      isLike: !this.state.isLike,
+    });
   }
   render() {
     this.el = creatDomfromString(`
 
     <button id="like-btn">
-        <span class="like-text"></span>
+        <span class="like-text"> ${this.state.isLike ? "取消" : "点赞"} </span>
         <span>👍</span>
     </button>
   
@@ -33,6 +41,10 @@ class LikeButton {
 const wrapper = document.querySelector(".wrapper");
 const LikeButton1 = new LikeButton();
 wrapper.appendChild(LikeButton1.render());
+LikeButton1.onStateChange = (oldEl, newEl) => {
+  wrapper.insertBefore(newEl, oldEl);
+  wrapper.removeChild(oldEl);
+};
 
 /**
  * 
