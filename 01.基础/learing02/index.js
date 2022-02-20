@@ -5,7 +5,8 @@ const creatDomfromString = (domString) => {
 };
 
 class LikeButton {
-  constructor() {
+  constructor(doms) {
+    this.doms = doms;
     this.state = {
       isLike: false,
     };
@@ -24,6 +25,10 @@ class LikeButton {
       isLike: !this.state.isLike,
     });
   }
+  onStateChange(oldEl, newEl) {
+    this.doms.insertBefore(newEl, oldEl);
+    this.doms.removeChild(oldEl);
+  }
   render() {
     this.el = creatDomfromString(`
 
@@ -39,12 +44,13 @@ class LikeButton {
 }
 
 const wrapper = document.querySelector(".wrapper");
-const LikeButton1 = new LikeButton();
+const LikeButton1 = new LikeButton(wrapper);
 wrapper.appendChild(LikeButton1.render());
-LikeButton1.onStateChange = (oldEl, newEl) => {
-  wrapper.insertBefore(newEl, oldEl);
-  wrapper.removeChild(oldEl);
-};
+
+// LikeButton1.onStateChange = (oldEl, newEl) => {
+//   wrapper.insertBefore(newEl, oldEl);
+//   wrapper.removeChild(oldEl);
+// };
 
 /**
  * 
