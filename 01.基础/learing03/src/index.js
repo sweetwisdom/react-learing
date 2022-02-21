@@ -1,20 +1,61 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-
-class LikeButton extends Component {
+class IndexT extends Component {
   constructor() {
     super();
+    this.state = {
+      unlikeText: "请点赞",
+    };
+  }
+  render() {
+    return (
+      <div>
+        <p>
+          <input
+            onChange={(e) => {
+              this.setState({
+                unlikeText: e.target.value + "赞赞👍🏻",
+              });
+              //   console.log(e.target.value);
+            }}
+          ></input>
+        </p>
+        <button
+          onClick={() => {
+            this.setState({
+              unlikeText: "赞赞👍🏻",
+            });
+          }}
+        >
+          改变值
+        </button>
+        <LikeButton likedText="已经点赞啦❤️" unlikeText={this.state.unlikeText}>
+          {" "}
+        </LikeButton>
+      </div>
+    );
+  }
+}
+class LikeButton extends Component {
+  static defaultProps = {
+    likedText: "已赞",
+    unlikeText: "赞👍🏻",
+  };
+  constructor() {
+    super();
+
     this.state = {
       isLike: false,
     };
   }
   handleClickOnclick() {
+    // console.log(this.props.wordings);
     this.setState({
       isLike: !this.state.isLike,
     });
   }
   render() {
-    return <button onClick={this.handleClickOnclick.bind(this)}>{this.state.isLike ? "取消" : "点赞👍"}</button>;
+    return <button onClick={this.handleClickOnclick.bind(this)}>{this.state.isLike ? this.props.likedText : this.props.unlikeText}</button>;
   }
 }
 class Title extends Component {
@@ -57,7 +98,7 @@ class Index extends Component {
   render() {
     return (
       <div>
-        <LikeButton></LikeButton>
+        <IndexT></IndexT>
         <Header />
         <Main />
         <Footer />
