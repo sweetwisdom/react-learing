@@ -1,17 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+class Header extends Component {
+  constructor() {
+    super();
+    this.isGood = true;
+  }
+  render() {
+    const name = "zccc";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    return (
+      <div>
+        <h1
+          onClick={() => {
+            console.log("123");
+          }}
+        >
+          React {name}
+        </h1>
+        {this.isGood ? <strong>is good 🤣 </strong> : <span> is good 😀</span>}
+      </div>
+    );
+  }
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(<Header />, document.getElementById("root"));
