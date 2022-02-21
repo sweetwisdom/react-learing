@@ -1,5 +1,22 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+
+class LikeButton extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isLike: false,
+    };
+  }
+  handleClickOnclick() {
+    this.setState({
+      isLike: !this.state.isLike,
+    });
+  }
+  render() {
+    return <button onClick={this.handleClickOnclick.bind(this)}>{this.state.isLike ? "取消" : "点赞👍"}</button>;
+  }
+}
 class Title extends Component {
   titleClick(e) {
     console.log(e.target, "this is Title");
@@ -40,6 +57,7 @@ class Index extends Component {
   render() {
     return (
       <div>
+        <LikeButton></LikeButton>
         <Header />
         <Main />
         <Footer />
