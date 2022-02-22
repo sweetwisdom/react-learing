@@ -7,9 +7,9 @@ function List() {
     { username: "Lucy", age: 20, gender: "female" },
   ];
 
-  const userEl = function (user) {
+  const userEl = function (user, i) {
     return (
-      <div>
+      <div key={i}>
         <p>姓名：{user.username}</p>
         <p>年龄：{user.age}</p>
         <p>性别：{user.gender}</p>
@@ -17,8 +17,14 @@ function List() {
       </div>
     );
   };
-
-  return <div>{users.map((user) => userEl(user))}</div>;
+  //   return (
+  //     <div>
+  //       {users.map((user, i) => (
+  //         <userEl user={user} i={i}></userEl>
+  //       ))}
+  //     </div>
+  //   );
+  return <div>{users.map((user, i) => userEl(user, i))}</div>;
 }
 
 // function List() {
