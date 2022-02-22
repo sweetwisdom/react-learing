@@ -1,5 +1,14 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import List from "./List";
+
+// class List extends Component{
+//     constructor() {
+//         super()
+//     }
+
+// }
+
 class IndexT extends Component {
   constructor() {
     super();
@@ -99,6 +108,7 @@ class Index extends Component {
     return (
       <div>
         <IndexT></IndexT>
+        <List></List>
         <Header />
         <Main />
         <Footer />
