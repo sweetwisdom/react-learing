@@ -18,3 +18,36 @@ code {
   padding: 20px;
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
 }
+.comment-field {
+  display: flex;
+  align-items: center;
+}
+.comment-field-name {
+  width: 100px;
+  margin: 20px 0;
+}
+.comment-field-input {
+  width: 100%;
+}
+.comment-field-input > input {
+  width: 80%;
+}
+.comment-field-input > textarea {
+  width: 80%;
+}
+.commnet-field-button {
+  margin: 20px 20px;
+  text-align: right;
+}
+button {
+  background-color: #4e6ef2;
+  /* border-radius: 0 10px 10px 0; */
+  padding: 5px 15px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: none;
+  font-weight: 400;
+  color: #fff;
+  border: 0;
+}
