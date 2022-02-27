@@ -51,3 +51,8 @@ button {
   color: #fff;
   border: 0;
 }
+.comment-li {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
