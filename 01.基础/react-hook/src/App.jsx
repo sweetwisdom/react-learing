@@ -24,6 +24,7 @@ function App() {
 
   return (
     <div className="useState">
+      {count <= 3 ? <ClearEf /> : ""}
       <h2>react hook for useState {count}</h2>
       <button
         onClick={() => {
@@ -43,5 +44,25 @@ function App() {
   );
 }
 
+function ClearEf() {
+  // 清理副作用 使用return
+  const [ooz, setOoz] = useState(0);
+  useEffect(() => {
+    const timerID = setInterval(() => {
+      setOoz(ooz + 1);
+      console.log("执行添加", ooz);
+    }, 500);
+    return () => {
+      clearInterval(timerID);
+      console.log("定时器已经清理");
+    };
+  }, [ooz]);
+
+  return (
+    <div>
+      <h2>清除副作用{ooz}</h2>
+    </div>
+  );
+}
 export default App;
 
